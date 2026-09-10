@@ -6,17 +6,23 @@ baseurl: ""
 url: "https://fntl.github.io"
 github_username: fntl
 
-theme: jekyll-theme-primer
+# The theme is vendored in this repo (see _layouts/ and assets/), so we do not
+# declare an external `theme:` gem. The only plugin is the built-in feed.
 plugins:
   - jekyll-feed
 
-# Primer ships a single `default` layout; apply it to every page and post
-# automatically so Markdown files need no layout front matter at all.
 defaults:
   - scope:
       path: ""
     values:
       layout: default
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+permalink: /:title/
 
 exclude:
   - .gitignore

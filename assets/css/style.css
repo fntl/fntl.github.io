@@ -1,0 +1,106 @@
+/*
+ * A single, dependency-free stylesheet. It only does two things:
+ *   1. Responsive layout (max-width, fluid images, wrapping nav, stacked TOC)
+ *   2. Vintage typography (typewriter serif, plain HTML element defaults)
+ * Every color and font choice here is inherited from the browser defaults for
+ * plain HTML elements — this file does not restyle headings, links, or lists.
+ */
+
+:root {
+  --font-serif: "Courier New", Courier, "Lucida Console", Monaco, monospace;
+  --measure: 48rem; /* comfortable reading measure, in rem */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-serif);
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  border-bottom: 1px solid;
+  padding: 1rem 0;
+}
+
+header nav {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.5rem;
+}
+
+.site-title {
+  font-weight: bold;
+}
+
+.nav-links a + a {
+  margin-left: 1rem;
+}
+
+/* Main content */
+main {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+main img,
+main video,
+main svg {
+  max-width: 100%;
+  height: auto;
+}
+
+main pre {
+  overflow-x: auto;
+}
+
+/* Table of contents */
+.toc {
+  border: 1px solid;
+  padding: 0.75rem 1rem 0.75rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.toc h2 {
+  font-size: 1em;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Desktop nicety only: pull the TOC out to the side of the post body. The
+   default mobile layout stacks it above the article, which is already fine. */
+@media (min-width: 60em) {
+  .post-content {
+    max-width: 42rem;
+  }
+
+  .toc {
+    float: right;
+    width: 16rem;
+    margin: 0 0 1rem 1.5rem;
+    font-size: 0.9em;
+  }
+}

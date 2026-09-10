@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<article>
+  <header class="post-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.date %}<p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %-d, %Y' }}</time></p>{% endif %}
+  </header>
+
+  {% if page.toc %}
+  <nav class="toc">
+    <h2>Contents</h2>
+    {{ content | toc_only }}
+  </nav>
+  {% endif %}
+
+  <div class="post-content">
+    {{ content | inject_anchors }}
+  </div>
+</article>

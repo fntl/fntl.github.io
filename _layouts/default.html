@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  {% if page.description %}<meta name="description" content="{{ page.description }}">{% elsif site.description %}<meta name="description" content="{{ site.description }}">{% endif %}
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% feed_meta %}
+</head>
+<body>
+  <header>
+    <nav>
+      <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <span class="nav-links">
+        {% for p in site.pages %}{% if p.title and p.title != "" %}<a href="{{ p.url | relative_url }}">{{ p.title }}</a>{% endif %}{% endfor %}
+        <a href="{{ '/feed.xml' | relative_url }}">Feed</a>
+      </span>
+    </nav>
+  </header>
+
+  <main>
+    {{ content }}
+  </main>
+
+  <footer>
+    <p>© {{ site.time | date: '%Y' }} {{ site.title }}. Built with Jekyll.</p>
+  </footer>
+</body>
+</html>
