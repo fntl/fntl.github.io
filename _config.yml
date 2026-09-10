@@ -1,0 +1,24 @@
+title: fntl.github.io
+description: >- # this means to ignore newlines until "baseurl:"
+  A personal site built with GitHub Pages and Jekyll. Handwritten Markdown,
+  no custom HTML or CSS.
+baseurl: ""
+url: "https://fntl.github.io"
+github_username: fntl
+
+theme: jekyll-theme-primer
+plugins:
+  - jekyll-feed
+
+# Primer ships a single `default` layout; apply it to every page and post
+# automatically so Markdown files need no layout front matter at all.
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+exclude:
+  - .gitignore
+  - README.md
+  - LICENSE
